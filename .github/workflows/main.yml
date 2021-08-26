@@ -17,6 +17,10 @@ jobs:
         with:
           targetPlatform: StandaloneWindows
           unityVersion: 2021.1.17f1
+      - name: Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: /Library
       - name: Automatic Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -25,4 +29,4 @@ jobs:
           prerelease: true
           title: "Nightly Build"
           files: |
-            build/*.*
+            /build
