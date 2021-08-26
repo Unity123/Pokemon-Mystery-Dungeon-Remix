@@ -14,6 +14,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: StandaloneWindows
+          unityVersion: 2021.1.17f1
       - name: Automatic Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
