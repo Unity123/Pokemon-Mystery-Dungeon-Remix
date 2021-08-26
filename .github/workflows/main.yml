@@ -25,4 +25,4 @@ jobs:
           prerelease: true
           title: "Nightly Build"
           files: |
-            *
+            build/*.*
