@@ -8,6 +8,8 @@ jobs:
   unity_builder:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Unity - Builder
         uses: game-ci/unity-builder@v2.0-alpha-11
         env:
