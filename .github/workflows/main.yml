@@ -26,10 +26,7 @@ jobs:
           unityVersion: 2021.1.17f1
       - name: Debug test
         run:
-          ls
-          cd build/
-          ls
-          cd ../
+          ls build/
       - name: Automatic Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
