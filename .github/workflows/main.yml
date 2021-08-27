@@ -24,17 +24,20 @@ jobs:
         with:
           targetPlatform: StandaloneWindows
           unityVersion: 2021.1.17f1
-      - name: Zip Release
+      - name: Zip release
         uses: vimtor/action-zip@v1
         with:
           files: /build/StandaloneWindows/
           dest: winbuild.zip
-      - name: Post Release
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Post release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "nightly"
           prerelease: true
-          title: "Nightly Build"
+          title: "Nightly Build ${{ steps.date.outputs.date }}"
           files: |
             winbuild.zip
