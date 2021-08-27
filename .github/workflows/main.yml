@@ -21,6 +21,7 @@ jobs:
         uses: actions/cache@v2.1.6
         with:
           path: /Library
+          key: Library-Windows
       - name: Automatic Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
