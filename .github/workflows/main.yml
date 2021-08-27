@@ -10,13 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Unity - Builder
-        uses: game-ci/unity-builder@v2.0-alpha-11
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          targetPlatform: StandaloneWindows
-          unityVersion: 2021.1.17f1
       - name: Cache
         uses: actions/cache@v2.1.6
         with:
@@ -24,6 +17,13 @@ jobs:
           key: Library-${{ hashFiles("Assets/**") }}
           restore-keys:
             Library-
+      - name: Unity - Builder
+        uses: game-ci/unity-builder@v2.0-alpha-11
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: StandaloneWindows
+          unityVersion: 2021.1.17f1
       - name: Automatic Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
