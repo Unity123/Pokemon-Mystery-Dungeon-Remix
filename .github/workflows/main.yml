@@ -24,10 +24,12 @@ jobs:
         with:
           targetPlatform: StandaloneWindows
           unityVersion: 2021.1.17f1
-      - name: Debug test
-        run:
-          ls build/
-      - name: Automatic Release
+      - name: Zip Release
+        uses: vimtor/action-zip@v1
+        with:
+          files: /build/StandaloneWindows/
+          dest: winbuild.zip
+      - name: Post Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -35,4 +37,4 @@ jobs:
           prerelease: true
           title: "Nightly Build"
           files: |
-            /build/StandaloneWindows/**
+            winbuild.zip
